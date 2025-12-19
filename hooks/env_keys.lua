@@ -3,7 +3,7 @@
 
 function PLUGIN:EnvKeys(ctx)
     local file = require("file")
-    local bin_path = file.join_path(ctx.rootPath, "bin")
+    local bin_path = file.join_path(ctx.path, "bin")
 
     return {
         {
@@ -12,7 +12,7 @@ function PLUGIN:EnvKeys(ctx)
         },
         {
             key = "POETRY_HOME",
-            value = ctx.rootPath,
+            value = ctx.path,
         },
     }
 end

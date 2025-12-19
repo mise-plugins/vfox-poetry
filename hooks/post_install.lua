@@ -2,8 +2,10 @@
 --- Runs the installer script with the correct version
 
 function PLUGIN:PostInstall(ctx)
-    local version = ctx.runtimeVersion
     local install_path = ctx.rootPath
+
+    -- Get version from sdkInfo
+    local version = ctx.sdkInfo["poetry"].version
 
     -- Run the Poetry installer via bash script
     local script = string.format([[
@@ -13,7 +15,7 @@ set -e
 # Run the Poetry installer
 curl -sSL https://install.python-poetry.org | POETRY_HOME="%s" python3 - --version "%s"
 
-# Configure poetry for mise/asdf compatibility
+# Configure poetry for mise compatibility
 # For Poetry >= 2.0.0, use virtualenvs.use-poetry-python false
 # For Poetry >= 1.2.0 and < 2.0.0, use virtualenvs.prefer-active-python true
 
