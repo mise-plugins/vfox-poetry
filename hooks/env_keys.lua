@@ -18,7 +18,7 @@ function PLUGIN:EnvKeys(ctx)
     }
 
     -- Check for pyproject option from tool configuration
-    local pyproject = os.getenv("MISE_TOOL_OPTS__PYPROJECT")
+    local pyproject = ctx.options and ctx.options.pyproject
     if not pyproject or pyproject == "" then
         return env_keys
     end
