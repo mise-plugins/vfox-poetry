@@ -2,11 +2,10 @@
 --- Runs the installer script with the correct version
 
 function PLUGIN:PostInstall(ctx)
-    local version = ctx.version
+    local version = ctx.runtimeVersion
     local install_path = ctx.rootPath
 
-    -- The pre_install downloaded the installer script
-    -- Now we need to run it with Python
+    -- Run the Poetry installer via bash script
     local script = string.format([[
 #!/bin/bash
 set -e
