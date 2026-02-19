@@ -14,7 +14,7 @@ function PLUGIN:PostInstall(ctx)
 set -e
 
 # Run the Poetry installer
-curl -sSL https://install.python-poetry.org | sed 's/symlinks=False/symlinks=True/' | POETRY_HOME="%s" python3 - --version "%s"
+curl -sSL https://install.python-poetry.org | sed 's/symlinks=False/symlinks=True/' | POETRY_HOME='%s' python3 - --version '%s'
 
 # Configure poetry for mise compatibility
 # For Poetry >= 2.0.0, use virtualenvs.use-poetry-python false
